@@ -1,0 +1,30 @@
+{
+  "files": {
+    "SRC/GUI/taskgui.py": [
+      {
+        "id": "ce27166c-2c41-4631-b474-7af804545406",
+        "line": 14,
+        "version": 9884,
+        "index": 496
+      },
+      {
+        "id": "94125a01-2233-45c3-b4d8-148a99f98c9d",
+        "line": 32,
+        "version": 9884,
+        "index": 1601
+      },
+      {
+        "id": "e0f8017d-7997-4897-acb0-40619b7c8721",
+        "line": 37,
+        "version": 9884,
+        "index": 1816
+      },
+      {
+        "id": "7e6cef02-e929-459f-878f-1dcd80ed8bb8",
+        "line": 40,
+        "version": 9884,
+        "index": 1887
+      }
+    ]
+  }
+}
