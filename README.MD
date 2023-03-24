@@ -1,5 +1,7 @@
 # Welcome to Task Manager!
 
+Make sure to allow the exe file to device (From Windows Defender) to use this program. it is not a virus, i promise!
+
 ###### what is it about?
 
 <!---inform the user what this project is about and what its capabilities are?--->
