@@ -4,8 +4,7 @@
 
 <!---inform the user what this project is about and what its capabilities are?--->
 <sub>
-Task Manager is a tool that allows you, <strong>The User</strong>, to keep track of any assignments due and promote
-productivity towards your time managing skills. it allows you to plan out your tasks and let you know what needs to be worked on first as a priority rather than focus on assignments that can be done at the same day. 
+Task Manager is a tool that helps you, <strong>The User</strong>, to keep track of your assignments and improve your time management skills. It allows you to plan out your tasks and prioritize them based on their due dates. By focusing on tasks that are due soon, you can effectively manage your time and avoid last-minute rushes.
 </sub>
 
 ### How does it work?
@@ -13,40 +12,40 @@ productivity towards your time managing skills. it allows you to plan out your t
 <!---main is only importing taskgui lol-->
 
 - `main.py`
-  - <sub> starts up the task gui file [temporary program]</sub>
+  - <sub>Starts up the task GUI file (temporary program)</sub>
 ###### Gui Functionality
 
 - `taskgui.py`
-  - <sub>Runs the main window and every other function in the program. Basically the main function. </sub>
+  - <sub>Runs the main window and manages all other functions in the program.</sub>
 - `guifunctions.py`
-  - <sub>Contains all GUI functions outside of the main window including popups and tabs.</sub>
+  - <sub>Contains all GUI functions outside of the main window, including pop-ups and tabs.</sub>
 - `taskcalendar.py`
   - <sub> Opens the calendar window from the main menu.</sub>
 
 ###### Attribute Functionality
 
 - `task.py`
-  - <sub>This has the class for an individual task, consisting of its name, date due, description. etc.</sub>
+  - <sub>Contains the class for an individual task, consisting of its name, due date, description, etc.</sub>
 
 ###### Import/Export Functionality
 
 - `importToCSV.py`
-  - <sub>Adds lines to the CSV file that's then read and used to display all tasks in the main menu.</sub>
+  - <sub>Adds lines to the CSV file, which is then read and used to display all tasks in the main menu.</sub>
 - `exportCSV.py`
   <!----inform the user what the 'exporting as a csv file' is---->
-  - <sub>This file is prompting the user that the csv file is in the path where the program is located.</sub>
+  - <sub>Informs the user that the CSV file is located in the path where the program is running.</sub>
 
 ###### Sorting Functionality
 
 - `sortbyClass.py`
   <!----inform the user what the 'sorting by class' is---->
-  - <sub> sorts the sample csv file,<strong>by class name</strong>, to a new file for the calendar list view</sub>
+  - <sub> Sorts the sample CSV file<strong>by class name </strong>for the calendar list view.</sub>
 - `sortbyDueDate.py`
   <!----inform the user what the 'sorting by due dates' is---->
-  - <sub> sorts the sample csv file,<strong>by date/time due</strong>, to a new file for the calendar list view</sub>
+  - <sub>Sorts the sample CSV file <strong>by due date</strong> and time for the calendar list view.</sub>
 - `sortbyPriority.py`
   <!----inform the user what the 'sorting by priority' is---->
-  - <sub> sorts the sample csv file,<strong>by priority</strong>, to a new file for the calendar list view</sub>
+  - <sub> Sorts the sample CSV file <strong>by priority</strong> for the calendar list view.</sub>
 
 ### Examples?
 
@@ -62,33 +61,32 @@ def sortDueDate():
   dpg.delete_item("Cal Window")
   taskCsv = pd.read_csv("task_list.csv")
   taskCsv.sort_values(["date"],inplace = True)
-#Creates a blank csv to our temp "medium"
+  # Creates a blank CSV to store the sorted data temporarily
   pd.DataFrame({}).to_csv("medium.csv")
   taskCsv.to_csv('medium.csv',index=False)
   TC.cal_maker("medium.csv")
 
 ```
 
-first, it is deleting the window calendar view list, if it is open, then it is going to read the task_list csv file so it can be sorted by pandas. it will then be appended to the new csv file called medium and calling the calendar view list function to create a new window with the sorted tasks based on a specific attribute (for instance, it is sorted by due date).
+The function first deletes the calendar window view list, if open. It then reads the 'task_list.csv' file and sorts it using pandas. The sorted data is then appended to a new CSV file called 'medium.csv', and the calendar view list function is called to create a new window with the sorted tasks based on their due dates.
 
 
 ### Main Purpose of this Project?
 
-<sub>This project gives users the ability to manage their tasks and assignments to better keep track of them and their time. It offers a variety of descriptors for tasks and allows users to set a date and time for which a task should be complete, which the user will be reminded of an hour or a few hours beforehand based on their preference.
+<sub>This project aims to help users manage their tasks and assignments more effectively by providing an organized and intuitive interface. Users can set due dates and times for tasks and receive reminders ahead of time, based on their preferences. This ensures that users stay on top of their tasks and manage their time efficiently.
 </sub>
 
 
 ### How to start Program?
 
-start the program via the main.py and taskgui.py should activate
+Start the program by running 'main.py', which will activate 'taskgui.py'
 
-<sub><strong>if the program is having issues with codespace, try running it via vscode and using 'pip install -r requirements.txt' in the shell command before running the program.</strong></sub>
+<sub><strong>If the program encounters issues with codespace, try running it via VSCode and use the command pip install -r requirements.txt in the terminal before running the program.</strong></sub>
 
 ### disclaimer:
 
-for csv file, it must not be empty, please use the examples provided to prevent it from failing the porgram.
+You must have a python environment and download the libraries to use this program
 
 ###### For test online:
 
-https://replit.com/@CSCIPYTHON/Task-Manager?v=1
-
+You can test the Task Manager online here: https://replit.com/@CSCIPYTHON/Task-Manager?v=1
