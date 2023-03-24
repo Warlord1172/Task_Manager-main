@@ -4,10 +4,11 @@ import threading
 import csv
 from time import sleep
 import time
-
+from plyer import notification
 import dearpygui.dearpygui as dpg
 import pandas as pd
-
+import tkinter as tk
+from tkinter import messagebox
 import SRC.Task_Features.task as task
 import SRC.Task_Features.export_import.importToCSV as iCSV
 
@@ -285,6 +286,7 @@ def disclaimer():
     dpg.add_button(label="Ok",callback=delete_disclaimer)
     
     
+
 def background_check_reminders():
     while True:
         time.sleep(60)
@@ -293,14 +295,23 @@ def background_check_reminders():
         for index, row in task_list.iterrows():
             task_due_date_str = row[1]
             task_due_time_str = row[2]
-            reminder_sent = row["reminder_sent"]  # Use the column name instead of the index
+            reminder_sent = row["reminder_sent"]
 
             task_due_datetime = datetime.datetime.strptime(task_due_date_str + " " + task_due_time_str, "%m/%d/%Y %I:%M:%S%p")
             current_datetime = datetime.datetime.now()
             reminder_sent = row[7]
 
             if current_datetime >= task_due_datetime - datetime.timedelta(minutes=30) and not reminder_sent:
-                reminder_displayed = reminder_win(index)
-                if reminder_displayed:
-                    task_list.at[index, "reminder sent"] = True  # Use the column name instead of the index
-                    task_list.to_csv('task_list.csv', index=False)
+              task_name = row[0]
+              time_difference = task_due_datetime - current_datetime
+              hours_left = int(time_difference.total_seconds() // 3600)
+              minutes_left = int((time_difference.total_seconds() % 3600) // 60)
+              show_tkinter_message_box('Assignment Reminder', f"{task_name} is due in {hours_left} hours and {minutes_left} minutes!")  # Show a tkinter message box with remaining time
+              task_list.at[index, "reminder_sent"] = True
+              task_list.to_csv('task_list.csv', index=False)
+
+def show_tkinter_message_box(title, message):
+    root = tk.Tk()
+    root.withdraw()  # Hide the main window
+    messagebox.showinfo(title, message)
+    root.destroy()  # Close the main window when the message box is closed
